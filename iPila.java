@@ -1,7 +1,7 @@
 
 /**
  *
- * @author Luis Nájera
+ * @20.07.16
  */
 public interface iPila {
     
