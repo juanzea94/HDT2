@@ -1,6 +1,6 @@
 /**
  *
- * @author Luis Nájera
+ * @20.07.16
  */
 public class main {
     public static void main(String[] args) {
