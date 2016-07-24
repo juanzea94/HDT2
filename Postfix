@@ -1,0 +1,72 @@
+
+ /**
+ *@author Juan Pablo Zea, Luis Najera
+ * @version 24.07.16
+ * 
+ */
+public class Postfix {
+    private int numero1;                                                        //Guarda el valor del primer numero y los resultados de las operaciones.
+    private int numero2;                                                        //Guarda el valor del segundo numero.
+    private int resultado;                                                      //Guarda el resultado.
+    private boolean on1;                                                        //Se utiliza para conocer si se ingreo el primer dato.
+    private boolean on2;                                                        //Se utiliza para conocer si se ingreso el segundo dato.                    //
+    private int cantidadDatos;                                                  //Guarda la cantidad de datos a recibir.
+    
+        
+    public Postfix(int cantidadDatos) {                                          //Constructor
+        numero1=0;
+        numero2=0;
+        resultado=0;
+        on1=false;
+        on2=false;
+        this.cantidadDatos = cantidadDatos;
+    }
+    
+    public void operacion(String dato) {             
+        Vector<String> pila= new Vector<>(String.class,cantidadDatos);          //Se instancia el vector, ingresando la cantidad de datos como parametro.
+        
+        
+        
+        if ((on1==false)){      
+            numero1=Integer.parseInt(dato);                                     //Se define el valor del primer numero.
+            on1=true;
+        }else{
+            if (on2==false){
+                numero2=Integer.parseInt(dato);                                 //Se define el valor del segundo numero
+                on2=true;
+            }
+        }
+        
+        if ((on1==true) && (on2==true)){                                        //Verifica si los dos primeros numeros ya fueron ingresados.
+            if (dato.equals("+")){
+                numero1 = numero1+numero2;                                      //En caso de que ingrese una suma se suman los numeros. El resultado se guarda en numero1.
+            }
+            if (dato.equals("-")){
+                numero1 = numero1-numero2;                                      //En caso de que ingrese una resta se restan los numeros. El resultado se guarda en numero1.
+            }
+            if (dato.equals("*")){
+                numero1 = numero1*numero2;                                      //En caso de que ingrese una multiplicación se multiplican los numeros. El resultado se guarda en numero1.
+            }
+            if (dato.equals("/")){
+                numero1 = numero1/numero2;                                      //En caso de que ingrese una división se dividen los numeros. El resultado se guarda en numero1.
+            }
+            
+            if ((!dato.equals("+"))&&(!dato.equals("-"))){                      //Si el dato no es igual a ninguna operacion se guarda su valor como integer en numero2.
+                if ((!dato.equals("*"))&&(!dato.equals("/"))){
+                    if(!dato.equals(" ")){
+                        numero2 = Integer.parseInt(dato);
+                    }
+                }
+            }
+            
+            
+            
+            
+        }
+        
+        pila.push(String.valueOf(numero1));                                     //Se hace un push para ingresar el resultado al vector.
+        System.out.println(pila.peek());                                        //Se hace un peek para conocer el ultimo dato en ingresar.
+        
+    }
+    
+}
